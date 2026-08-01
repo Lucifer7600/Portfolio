@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #e2e8f0;
+  background: #0b0f17;
+  font-synthesis: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+::selection {
+  background: #22d3ee;
+  color: #020617;
+}
+.text-balance {
+  text-wrap: balance;
+}
+#toolbox article > div:last-child span {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+#journey article ul {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+#journey article > div p {
+  font-size: 0.6875rem;
+  line-height: 1.2rem;
+}
+#contact a {
+  font-size: 1.0625rem;
+}
+footer {
+  font-size: 0.6875rem;
+}
+.motion-paused *,
+.motion-paused *::before,
+.motion-paused *::after {
+  animation-play-state: paused !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0ms !important;
+}
+.motion-paused .ambient-network {
+  display: none !important;
+}
+.avatar-hidden .system-guide {
+  display: none !important;
+}
+.topics-hidden .topic-announcement {
+  display: none !important;
+}
+.layer-scene {
+  position: relative;
+  isolation: isolate;
+  min-height: min(76svh, 760px);
+  align-content: center;
+  padding: clamp(4.5rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(34, 211, 238, 0.08),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.008)
+    );
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.24),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+  transform-origin: center top;
+  opacity: 0.16 !important;
+  filter: saturate(0.35) brightness(0.6) blur(2px) !important;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.7s ease;
+}
+.layer-scene.layer-active {
+  opacity: 1 !important;
+  filter: none !important;
+  box-shadow:
+    0 45px 130px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(34, 211, 238, 0.06),
+    inset 0 1px rgba(255, 255, 255, 0.06);
+}
+.layer-scene::before {
+  content: attr(data-layer);
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  top: 1.5rem;
+  font:
+    500 0.625rem/1 "JetBrains Mono",
+    monospace;
+  letter-spacing: 0.18em;
+  color: rgba(103, 232, 249, 0.72);
+}
+.layer-scene::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -30%;
+  top: 0;
+  width: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #67e8f9, transparent);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.75);
+  animation: layer-scan 4.8s linear infinite;
+}
+.layer-scene:nth-of-type(even) {
+  background:
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(52, 211, 153, 0.07),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.018),
+      rgba(255, 255, 255, 0.006)
+    );
+}
+.layer-scene-cta {
+  min-height: min(58svh, 560px);
+}
+@keyframes layer-scan {
+  to {
+    transform: translateX(440%);
+  }
+}
+@keyframes layer-depth-reveal {
+  from {
+    opacity: 0.15;
+    transform: perspective(1200px) translateY(110px) rotateX(7deg) scale(0.92);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) rotateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes layer-resilience {
+  from {
+    opacity: 0;
+    transform: perspective(1300px) translateX(-12%) rotateY(11deg) scale(0.94);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes layer-performance {
+  from {
+    opacity: 0;
+    transform: perspective(1300px) translateY(18%) rotateX(12deg) scale(0.9);
+    clip-path: inset(0 48% 0 48% round 2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0 round 2rem);
+  }
+}
+@keyframes layer-decisions {
+  from {
+    opacity: 0;
+    transform: perspective(1300px) translateX(12%) rotateY(-11deg) scale(0.94);
+    filter: saturate(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: saturate(1);
+  }
+}
+@keyframes layer-operations {
+  from {
+    opacity: 0;
+    transform: perspective(1300px) translateY(14%) scale(0.86);
+    border-radius: 8rem;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    border-radius: 2rem;
+    filter: none;
+  }
+}
+@keyframes layer-connect {
+  from {
+    opacity: 0;
+    transform: perspective(1300px) scale(0.72) translateZ(-180px);
+    filter: brightness(0.35) blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  .layer-scene {
+    animation-timeline: view();
+    animation-range: entry 3% cover 34%;
+  }
+  .layer-scene[data-layer^="LAYER 01"] {
+    animation-name: layer-resilience;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+  .layer-scene[data-layer^="LAYER 02"] {
+    animation-name: layer-performance;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+  .layer-scene[data-layer^="LAYER 03"] {
+    animation-name: layer-decisions;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+  .layer-scene[data-layer^="LAYER 04"] {
+    animation-name: layer-operations;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+  .layer-scene[data-layer^="LAYER 05"] {
+    animation-name: layer-connect;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .layer-scene {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .layer-scene::after {
+    animation: none !important;
+  }
+}
