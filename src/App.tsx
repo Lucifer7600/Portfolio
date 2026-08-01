@@ -593,7 +593,7 @@ function SystemGuide() {
             className={`relative h-20 w-20 rounded-full border-2 bg-white p-0.5 shadow-[0_15px_45px_rgba(0,0,0,.32)] transition ${open ? "border-blue-400 ring-4 ring-blue-400/20" : "border-amber-300 ring-4 ring-amber-300/15"}`}
           >
             <img
-              src="/avatar-3d.png"
+              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
               alt="Abhishek portfolio agent"
               draggable={false}
               className="pointer-events-none h-full w-full select-none rounded-full object-cover"
@@ -620,7 +620,7 @@ function SystemGuide() {
             className="topic-announcement pointer-events-none fixed bottom-5 left-1/2 z-[54] flex w-[min(440px,calc(100vw-32px))] -translate-x-1/2 items-center gap-3 rounded-2xl border border-amber-300/50 bg-[#fffdf7]/95 p-3 text-zinc-900 shadow-[0_18px_60px_rgba(0,0,0,.28)] backdrop-blur"
           >
             <img
-              src="/avatar-3d.png"
+              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
               alt=""
               className="h-12 w-12 shrink-0 rounded-full border border-amber-300 object-cover"
             />
@@ -645,7 +645,7 @@ function SystemGuide() {
           >
             <header className="flex items-center gap-3 border-b border-white/10 p-4">
               <img
-                src="/avatar-3d.png"
+                src={`${import.meta.env.BASE_URL}avatar-3d.png`}
                 alt=""
                 className="h-10 w-10 rounded-full border border-blue-300 object-cover"
               />
@@ -1747,7 +1747,7 @@ function PortfolioIntro({ onComplete }: { onComplete: () => void }) {
             className="absolute -inset-3 rounded-full border border-dashed border-cyan-300/35"
           />
           <img
-            src="/avatar-3d.png"
+            src={`${import.meta.env.BASE_URL}avatar-3d.png`}
             alt="Abhishek Lunagariya"
             className="h-full w-full rounded-full border-2 border-amber-200/70 bg-white object-cover shadow-[0_22px_80px_rgba(34,211,238,.22)]"
           />
@@ -2060,7 +2060,7 @@ export default function App() {
             className="flex items-center gap-2 pr-2 text-xs font-bold no-underline"
           >
             <motion.img
-              src="/avatar-3d.png"
+              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
               alt="Abhishek Lunagariya"
               animate={{
                 height: headerCompact ? 34 : 40,
