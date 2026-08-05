@@ -915,6 +915,60 @@ function EngineeringEvidence() {
   );
 }
 
+function EngineeringGateway() {
+  return (
+    <section className="relative overflow-hidden border-y border-white/[.07] bg-[#070b11] px-5 py-24 lg:px-8 lg:py-32">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(circle_at_75%_50%,rgba(34,211,238,.09),transparent_28%)]"
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative mx-auto grid max-w-7xl items-center gap-10 rounded-3xl border border-cyan-300/15 bg-white/[.025] p-7 shadow-[0_35px_100px_rgba(0,0,0,.25)] sm:p-10 lg:grid-cols-[1fr_auto]"
+      >
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[.22em] text-cyan-300">
+            Optional technical deep dive
+          </p>
+          <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-.05em] text-white sm:text-6xl">
+            Want to inspect how I think about production systems?
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            Open a dedicated engineering experience with failure simulations,
+            architecture tradeoffs, performance evidence, incident analysis, and
+            operational safeguards.
+          </p>
+        </div>
+        <motion.a
+          href="engineering.html"
+          whileHover={{ scale: 1.04, y: -5 }}
+          whileTap={{ scale: 0.97 }}
+          className="group relative min-w-56 overflow-hidden rounded-2xl border border-cyan-300/30 bg-cyan-300/[.08] px-7 py-6 text-white no-underline shadow-[0_22px_60px_rgba(34,211,238,.12)]"
+        >
+          <motion.span
+            animate={{ x: ["-160%", "280%"] }}
+            transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 1.4 }}
+            className="absolute inset-y-0 w-16 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+          />
+          <span className="relative font-mono text-[9px] tracking-[.18em] text-cyan-300">
+            ENTER THE
+          </span>
+          <strong className="relative mt-3 block text-2xl">
+            Engineering Lab
+          </strong>
+          <span className="relative mt-4 inline-flex items-center gap-2 text-sm text-slate-400 transition group-hover:text-white">
+            Launch experience{" "}
+            <i className="transition group-hover:translate-x-1">→</i>
+          </span>
+        </motion.a>
+      </motion.div>
+    </section>
+  );
+}
+
 const failureScenarios = [
   {
     name: "Traffic spike",
@@ -1993,7 +2047,7 @@ function SignatureFinale() {
   );
 }
 
-export default function App() {
+function PortfolioApp() {
   const [menu, setMenu] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [headerCompact, setHeaderCompact] = useState(false);
@@ -2004,14 +2058,7 @@ export default function App() {
     setHeaderCompact(latest > 90),
   );
   useEffect(() => {
-    const ids = [
-      "home",
-      "projects",
-      "architecture-lab",
-      "toolbox",
-      "journey",
-      "contact",
-    ];
+    const ids = ["home", "projects", "toolbox", "journey", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -2078,19 +2125,18 @@ export default function App() {
           >
             {[
               ["Projects", "projects"],
-              ["Architecture", "architecture-lab"],
+              ["Engineering Lab", "engineering.html"],
               ["Tech Stack", "toolbox"],
               ["Playground", "home"],
             ].map((n) => (
               <a
                 onClick={() => setMenu(false)}
-                className={`relative rounded-full px-3 py-2 font-mono text-[9px] no-underline transition hover:text-zinc-950 ${activeNav === n[1] || (n[1] === "architecture-lab" && activeNav === "journey") ? "text-zinc-950" : "text-zinc-600"}`}
-                href={`#${n[1]}`}
+                className={`relative rounded-full px-3 py-2 font-mono text-[9px] no-underline transition hover:text-zinc-950 ${activeNav === n[1] ? "text-zinc-950" : "text-zinc-600"}`}
+                href={n[1].endsWith(".html") ? n[1] : `#${n[1]}`}
                 key={n[1]}
               >
                 <span className="relative z-10">{n[0]}</span>
-                {(activeNav === n[1] ||
-                  (n[1] === "architecture-lab" && activeNav === "journey")) && (
+                {activeNav === n[1] && (
                   <motion.span
                     layoutId="active-navigation"
                     transition={{ type: "spring", stiffness: 420, damping: 34 }}
@@ -2161,6 +2207,7 @@ export default function App() {
           </div>
         </section>
         <CaseStudy />
+        <EngineeringGateway />
         <section
           id="toolbox"
           className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-36"
@@ -2212,8 +2259,6 @@ export default function App() {
             ))}
           </div>
         </section>
-        <EngineeringEvidence />
-        <EngineeringLab />
         <section
           id="journey"
           className="border-y border-white/[.07] bg-[#080c12]"
@@ -2334,5 +2379,74 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function EngineeringPage() {
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 30 });
+  return (
+    <div className="min-h-screen bg-[#060a10] text-slate-200 selection:bg-cyan-400 selection:text-slate-950">
+      <motion.div
+        style={{ scaleX: progress, transformOrigin: "left" }}
+        className="fixed left-0 right-0 top-0 z-[80] h-0.5 bg-gradient-to-r from-cyan-400 via-white to-emerald-400"
+      />
+      <AmbientNetwork />
+      <header className="fixed inset-x-0 top-4 z-50 mx-auto flex w-[calc(100%-24px)] max-w-5xl items-center justify-between rounded-full border border-white/10 bg-[#080c12]/85 px-3 py-2 text-white shadow-[0_20px_70px_rgba(0,0,0,.35)] backdrop-blur-xl">
+        <a
+          href="index.html"
+          className="group flex items-center gap-3 text-white no-underline"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+            alt="Abhishek Lunagariya"
+            className="h-10 w-10 rounded-full border border-cyan-300/30 bg-white object-cover"
+          />
+          <span>
+            <strong className="block text-xs">Abhishek Lunagariya</strong>
+            <small className="font-mono text-[8px] tracking-[.14em] text-cyan-300">
+              ENGINEERING LAB
+            </small>
+          </span>
+        </a>
+        <a
+          href="index.html"
+          className="rounded-full border border-white/10 px-4 py-2 font-mono text-[9px] text-slate-300 no-underline transition hover:border-cyan-300/35 hover:text-white"
+        >
+          ← MAIN PORTFOLIO
+        </a>
+      </header>
+      <main className="relative pt-24">
+        <section className="mx-auto max-w-7xl px-5 pb-8 pt-20 lg:px-8 lg:pt-28">
+          <Reveal>
+            <p className="font-mono text-[10px] uppercase tracking-[.25em] text-cyan-300">
+              Technical experience · separate from the recruiter view
+            </p>
+            <h1 className="mt-6 max-w-5xl text-6xl font-semibold tracking-[-.065em] text-white sm:text-8xl">
+              Inside the systems.
+            </h1>
+            <p className="mt-7 max-w-3xl text-xl leading-9 text-slate-400">
+              A focused environment for engineers and technical interviewers who
+              want to explore the reasoning, safeguards, tradeoffs, and
+              operational discipline behind the work.
+            </p>
+          </Reveal>
+        </section>
+        <EngineeringEvidence />
+        <EngineeringLab />
+        <SignatureFinale />
+      </main>
+      <footer className="border-t border-white/[.07] px-5 py-8 text-center font-mono text-[9px] tracking-[.15em] text-slate-600">
+        ABHISHEK LUNAGARIYA · ENGINEERING LAB · OTTAWA, ONTARIO
+      </footer>
+    </div>
+  );
+}
+
+export default function App() {
+  return window.location.pathname.endsWith("engineering.html") ? (
+    <EngineeringPage />
+  ) : (
+    <PortfolioApp />
   );
 }
