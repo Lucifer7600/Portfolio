@@ -372,11 +372,7 @@ function BugHunter() {
       aria-label="Animated Abhishek debugging software bugs"
     >
       <div className="absolute inset-x-10 bottom-4 h-8 rounded-[50%] bg-zinc-900/10 blur-md" />
-      <motion.div
-        animate={reduced ? {} : { y: [0, -5, 0] }}
-        transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-7 left-1/2 h-48 w-32 -translate-x-1/2"
-      >
+      <motion.div className="absolute bottom-7 left-1/2 h-48 w-32 -translate-x-1/2">
         <div className="absolute left-1/2 top-0 h-16 w-14 -translate-x-1/2 rounded-[45%_45%_48%_48%] bg-[#c98f67] shadow-inner">
           <div className="absolute -top-1 left-1 h-7 w-12 rounded-t-[55%] bg-zinc-900" />
           <i className="absolute left-3 top-8 h-1 w-1 rounded-full bg-zinc-900" />
@@ -389,8 +385,7 @@ function BugHunter() {
         <div className="absolute bottom-0 left-7 h-12 w-5 rounded-b-lg bg-zinc-800" />
         <div className="absolute bottom-0 right-7 h-12 w-5 rounded-b-lg bg-zinc-800" />
         <motion.div
-          animate={reduced ? {} : { rotate: [-18, 38, -18] }}
-          transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+          whileHover={{ rotate: 18 }}
           className="absolute -right-4 top-20 h-5 w-20 origin-left rounded-full bg-[#c98f67]"
         >
           <span className="absolute -right-3 -top-8 rotate-[-25deg] rounded-lg border-2 border-amber-600 bg-gradient-to-br from-amber-200 to-amber-500 px-3 py-2 text-xl shadow-lg">
@@ -404,23 +399,9 @@ function BugHunter() {
           key={bug}
           onClick={() => squash(bug)}
           initial={{ scale: 0 }}
-          animate={
-            reduced
-              ? { scale: 1 }
-              : {
-                  scale: 1,
-                  x: [0, i % 2 ? 12 : -14, 0],
-                  y: [0, -10, 4, 0],
-                  rotate: [0, 8, -8, 0],
-                }
-          }
+          animate={{ scale: 1 }}
           exit={{ scale: 0, opacity: 0 }}
-          transition={{
-            scale: { duration: 0.25 },
-            x: { duration: 2 + i * 0.4, repeat: Infinity },
-            y: { duration: 1.8 + i * 0.3, repeat: Infinity },
-            rotate: { duration: 1.5, repeat: Infinity },
-          }}
+          transition={{ duration: 0.25 }}
           className={`absolute z-20 grid h-10 w-10 place-items-center rounded-xl border border-red-300 bg-red-100 text-xl shadow-lg ${i === 0 ? "left-2 top-20" : i === 1 ? "right-2 top-12" : "right-5 bottom-5"}`}
         >
           🐞
@@ -471,7 +452,7 @@ function SystemGuide() {
     if (/available|hire|location|ottawa|relocat/.test(q))
       return "He is based in Ottawa, Ontario and is open to backend and software engineering opportunities, including relocation.";
     if (/contact|email|reach|resume|résumé/.test(q))
-      return "You can email him at Abhyluna2000@gmail.com or use the résumé button in the navigation. His GitHub and LinkedIn are available in the contact section.";
+      return "You can call him at +1 (514) 998-2933, email Abhyluna2000@gmail.com, or use the résumé button in the navigation. His GitHub and LinkedIn are available in the contact section.";
     return "I can help with his skills, experience, projects, performance metrics, availability, résumé, or contact details. What would you like to explore?";
   };
   const ask = (question: string) => {
@@ -593,10 +574,10 @@ function SystemGuide() {
             className={`relative h-20 w-20 rounded-full border-2 bg-white p-0.5 shadow-[0_15px_45px_rgba(0,0,0,.32)] transition ${open ? "border-blue-400 ring-4 ring-blue-400/20" : "border-amber-300 ring-4 ring-amber-300/15"}`}
           >
             <img
-              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+              src={`${import.meta.env.BASE_URL}profile-photo.png`}
               alt="Abhishek portfolio agent"
               draggable={false}
-              className="pointer-events-none h-full w-full select-none rounded-full object-cover"
+              className="pointer-events-none h-full w-full select-none rounded-full object-cover object-[50%_24%]"
             />
             <motion.span
               animate={{ scale: [1, 1.4, 1], opacity: [0.65, 0, 0.65] }}
@@ -620,9 +601,9 @@ function SystemGuide() {
             className="topic-announcement pointer-events-none fixed bottom-5 left-1/2 z-[54] flex w-[min(440px,calc(100vw-32px))] -translate-x-1/2 items-center gap-3 rounded-2xl border border-amber-300/50 bg-[#fffdf7]/95 p-3 text-zinc-900 shadow-[0_18px_60px_rgba(0,0,0,.28)] backdrop-blur"
           >
             <img
-              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+              src={`${import.meta.env.BASE_URL}profile-photo.png`}
               alt=""
-              className="h-12 w-12 shrink-0 rounded-full border border-amber-300 object-cover"
+              className="h-12 w-12 shrink-0 rounded-full border border-amber-300 object-cover object-[50%_24%]"
             />
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[.14em] text-blue-700">
@@ -645,9 +626,9 @@ function SystemGuide() {
           >
             <header className="flex items-center gap-3 border-b border-white/10 p-4">
               <img
-                src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+                src={`${import.meta.env.BASE_URL}profile-photo.png`}
                 alt=""
-                className="h-10 w-10 rounded-full border border-blue-300 object-cover"
+                className="h-10 w-10 rounded-full border border-blue-300 object-cover object-[50%_24%]"
               />
               <div>
                 <p className="text-sm font-semibold">Ask Abhishek AI</p>
@@ -1801,9 +1782,9 @@ function PortfolioIntro({ onComplete }: { onComplete: () => void }) {
             className="absolute -inset-3 rounded-full border border-dashed border-cyan-300/35"
           />
           <img
-            src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+            src={`${import.meta.env.BASE_URL}profile-photo.png`}
             alt="Abhishek Lunagariya"
-            className="h-full w-full rounded-full border-2 border-amber-200/70 bg-white object-cover shadow-[0_22px_80px_rgba(34,211,238,.22)]"
+            className="h-full w-full rounded-full border-2 border-amber-200/70 bg-white object-cover object-[50%_24%] shadow-[0_22px_80px_rgba(34,211,238,.22)]"
           />
           <motion.span
             animate={
@@ -1933,27 +1914,11 @@ function SignatureFinale() {
         aria-hidden
         className="absolute left-1/2 top-1/2 aspect-square w-[min(82vw,760px)] -translate-x-1/2 -translate-y-1/2"
       >
-        <motion.div
-          animate={reduced ? {} : { rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full border border-dashed border-cyan-300/15"
-        />
-        <motion.div
-          animate={reduced ? {} : { rotate: -360 }}
-          transition={{ duration: 21, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-[12%] rounded-full border border-emerald-300/10"
-        >
+        <motion.div className="absolute inset-0 rounded-full border border-dashed border-cyan-300/15" />
+        <motion.div className="absolute inset-[12%] rounded-full border border-emerald-300/10">
           <span className="absolute left-1/2 top-0 h-2 w-2 -translate-y-1/2 rounded-full bg-emerald-300 shadow-[0_0_24px_#34d399]" />
         </motion.div>
-        <motion.div
-          animate={
-            reduced
-              ? {}
-              : { scale: [0.94, 1.04, 0.94], opacity: [0.35, 0.7, 0.35] }
-          }
-          transition={{ duration: 4, repeat: Infinity }}
-          className="absolute inset-[28%] rounded-full border border-cyan-300/20 shadow-[0_0_80px_rgba(34,211,238,.08)]"
-        />
+        <motion.div className="absolute inset-[28%] rounded-full border border-cyan-300/20 shadow-[0_0_80px_rgba(34,211,238,.08)]" />
       </div>
       <div className="relative mx-auto max-w-7xl">
         <motion.div
@@ -1963,13 +1928,7 @@ function SignatureFinale() {
           transition={{ duration: 0.8 }}
         >
           <div className="mx-auto mb-9 flex w-fit items-center gap-3 rounded-full border border-emerald-300/20 bg-emerald-300/[.06] px-4 py-2 font-mono text-[10px] tracking-[.18em] text-emerald-300">
-            <motion.i
-              animate={
-                reduced ? {} : { scale: [1, 1.8, 1], opacity: [1, 0.25, 1] }
-              }
-              transition={{ duration: 1.8, repeat: Infinity }}
-              className="h-2 w-2 rounded-full bg-emerald-300"
-            />
+            <motion.i className="h-2 w-2 rounded-full bg-emerald-300" />
             SYSTEM READY FOR WHAT'S NEXT
           </div>
           <p className="font-mono text-[10px] uppercase tracking-[.28em] text-slate-500">
@@ -1988,15 +1947,13 @@ function SignatureFinale() {
                       : {
                           opacity: 0,
                           y: 55,
-                          rotateX: -70,
-                          filter: "blur(12px)",
+                          scale: 0.96,
                         }
                   }
                   animate={{
                     opacity: 1,
                     y: 0,
-                    rotateX: 0,
-                    filter: "blur(0px)",
+                    scale: 1,
                   }}
                   exit={
                     reduced
@@ -2004,8 +1961,7 @@ function SignatureFinale() {
                       : {
                           opacity: 0,
                           y: -45,
-                          rotateX: 70,
-                          filter: "blur(10px)",
+                          scale: 0.96,
                         }
                   }
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
@@ -2087,7 +2043,6 @@ function PortfolioApp() {
         aria-hidden
         className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(0,229,255,.07),transparent_26%),radial-gradient(circle_at_80%_20%,rgba(0,255,102,.045),transparent_25%)]"
       />
-      <AmbientNetwork />
       <SystemGuide />
       <RecruiterMode />
       <AccessibilityPanel />
@@ -2107,7 +2062,7 @@ function PortfolioApp() {
             className="flex items-center gap-2 pr-2 text-xs font-bold no-underline"
           >
             <motion.img
-              src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+              src={`${import.meta.env.BASE_URL}profile-photo.png`}
               alt="Abhishek Lunagariya"
               animate={{
                 height: headerCompact ? 34 : 40,
@@ -2116,7 +2071,7 @@ function PortfolioApp() {
               }}
               whileHover={{ scale: 1.12, rotate: -8 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-full border border-amber-300 object-cover shadow-md"
+              className="rounded-full border border-amber-300 object-cover object-[50%_24%] shadow-md"
             />
             <span className="hidden sm:inline">ABHISHEK L.</span>
           </a>
@@ -2167,6 +2122,12 @@ function PortfolioApp() {
               className="hidden rounded-full border border-amber-300/80 bg-amber-50/70 px-3 py-2 font-mono text-[9px] no-underline transition hover:bg-amber-100 sm:block"
             >
               Résumé PDF ↗
+            </a>
+            <a
+              href="tel:+15149982933"
+              className="hidden rounded-full border border-emerald-500/25 bg-emerald-50 px-3 py-2 font-mono text-[9px] text-emerald-800 no-underline transition hover:-translate-y-0.5 hover:bg-emerald-100 xl:block"
+            >
+              Call +1 514 998 2933
             </a>
             <button
               onClick={() => setMenu(!menu)}
@@ -2345,6 +2306,15 @@ function PortfolioApp() {
             >
               Abhyluna2000@gmail.com
             </a>
+            <a
+              href="tel:+15149982933"
+              className="mt-4 block text-xl text-emerald-300 no-underline transition hover:text-emerald-200"
+            >
+              +1 (514) 998-2933{" "}
+              <span className="ml-2 font-mono text-[9px] tracking-[.14em] text-slate-500">
+                CALL DIRECTLY
+              </span>
+            </a>
             <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-400">
               <a
                 href="https://github.com/Lucifer7600"
@@ -2391,16 +2361,15 @@ function EngineeringPage() {
         style={{ scaleX: progress, transformOrigin: "left" }}
         className="fixed left-0 right-0 top-0 z-[80] h-0.5 bg-gradient-to-r from-cyan-400 via-white to-emerald-400"
       />
-      <AmbientNetwork />
       <header className="fixed inset-x-0 top-4 z-50 mx-auto flex w-[calc(100%-24px)] max-w-5xl items-center justify-between rounded-full border border-white/10 bg-[#080c12]/85 px-3 py-2 text-white shadow-[0_20px_70px_rgba(0,0,0,.35)] backdrop-blur-xl">
         <a
           href="index.html"
           className="group flex items-center gap-3 text-white no-underline"
         >
           <img
-            src={`${import.meta.env.BASE_URL}avatar-3d.png`}
+            src={`${import.meta.env.BASE_URL}profile-photo.png`}
             alt="Abhishek Lunagariya"
-            className="h-10 w-10 rounded-full border border-cyan-300/30 bg-white object-cover"
+            className="h-10 w-10 rounded-full border border-cyan-300/30 bg-white object-cover object-[50%_24%]"
           />
           <span>
             <strong className="block text-xs">Abhishek Lunagariya</strong>
