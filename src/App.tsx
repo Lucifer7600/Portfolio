@@ -415,6 +415,118 @@ function BugHunter() {
   );
 }
 
+const portfolioKnowledge = [
+  {
+    topics: ["who is abhishek", "about", "introduce", "summary", "profile", "tell me about"],
+    answer:
+      "Abhishek Lunagariya is an Ottawa-based Backend Software Developer with 4+ years of experience building Java and Spring Boot services, data-intensive applications, APIs, and cloud delivery workflows.",
+  },
+  {
+    topics: ["role", "title", "position", "profession", "what does he do", "backend developer"],
+    answer:
+      "He is a Backend Software Developer focused on Java, Spring Boot, REST APIs, PostgreSQL, messaging, testing, cloud infrastructure, and reliable production delivery.",
+  },
+  {
+    topics: ["current job", "current company", "ciklum", "present employer", "where does he work"],
+    answer:
+      "He has worked as a Software Developer at Ciklum in Canada since June 2025, contributing to compliance microservices, API and query optimization, PostgreSQL performance, and automated delivery workflows.",
+  },
+  {
+    topics: ["cred", "previous job", "past company", "india", "former employer"],
+    answer:
+      "At CRED in India from January 2021 to March 2023, he worked as a Software Developer on Java transaction processing, Kafka messaging pipelines, automated testing, inventory workflows, and reporting systems.",
+  },
+  {
+    topics: ["experience", "years", "career", "employment", "work history", "timeline"],
+    answer:
+      "He has 4+ years of software-development experience across Ciklum and CRED, spanning requirements, implementation, testing, delivery, optimization, and production support.",
+  },
+  {
+    topics: ["language", "java", "typescript", "javascript", "sql", "c#", ".net", "bash"],
+    answer:
+      "His language toolkit includes Java as the primary backend language, plus TypeScript, JavaScript, SQL, C#/.NET, and Bash.",
+  },
+  {
+    topics: ["spring", "framework", "rest", "api", "grpc", "graphql", "microservice"],
+    answer:
+      "He builds backend services with Java and Spring Boot and works with microservices, REST APIs, GraphQL, and gRPC. His approach emphasizes clear contracts, observability, testing, and maintainability.",
+  },
+  {
+    topics: ["database", "postgres", "postgresql", "oracle", "mysql", "sql server", "mongo", "redis", "cache"],
+    answer:
+      "His data experience includes PostgreSQL, Oracle, MySQL, SQL Server, MongoDB, and Redis, including query analysis, indexing, pagination, throughput optimization, and caching.",
+  },
+  {
+    topics: ["kafka", "rabbitmq", "queue", "messaging", "event", "asynchronous"],
+    answer:
+      "He has worked with Kafka and RabbitMQ patterns for asynchronous processing and event-driven services. At CRED, Kafka pipelines improved system throughput by 20%.",
+  },
+  {
+    topics: ["aws", "cloud", "docker", "kubernetes", "terraform", "jenkins", "devops", "ci/cd", "github actions", "deployment"],
+    answer:
+      "His production toolkit includes AWS, Docker, Kubernetes, Terraform, Jenkins, GitHub Actions, SonarQube, and CI/CD workflows. Delivery automation reduced manual deployment effort by 40%.",
+  },
+  {
+    topics: ["test", "testing", "junit", "mockito", "coverage", "quality", "sonarqube"],
+    answer:
+      "He uses JUnit, Mockito, integration testing, automated quality gates, and SonarQube. One project reached 95% test coverage and reduced production defects by 18%.",
+  },
+  {
+    topics: ["performance", "latency", "throughput", "optimization", "fast", "scale", "metric", "impact", "20k"],
+    answer:
+      "Measured impact includes API response time reduced from 500ms to 400ms, PostgreSQL throughput improved by 30%, Java transaction processing reduced from 250ms to 180ms, and support for 20,000+ peak concurrent requests.",
+  },
+  {
+    topics: ["project", "case study", "built", "portfolio work", "compliance platform", "inventory", "reporting"],
+    answer:
+      "Featured work includes an enterprise compliance platform, an inventory and reporting system, Kafka-based transaction processing, and a cloud-native delivery pipeline. Each case study emphasizes measurable production outcomes.",
+  },
+  {
+    topics: ["problem solving", "strength", "approach", "how does he work", "engineering style", "debug"],
+    answer:
+      "His engineering approach is measurement-first: reproduce the issue, inspect logs and execution plans, isolate the bottleneck, implement the smallest reliable change, validate with tests and realistic data, then monitor production metrics.",
+  },
+  {
+    topics: ["available", "availability", "hire", "opportunity", "open to work", "relocate", "relocation"],
+    answer:
+      "He is open to backend and software-development opportunities, including roles that value production ownership and scalable systems. He is also open to relocation.",
+  },
+  {
+    topics: ["location", "live", "based", "ottawa", "montreal", "canada"],
+    answer: "He is based in Ottawa, Ontario, Canada.",
+  },
+  {
+    topics: ["contact", "phone", "call", "number", "email", "reach"],
+    answer:
+      "You can call Abhishek at +1 (514) 998-2933 or email Abhyluna2000@gmail.com.",
+  },
+  {
+    topics: ["github", "code profile", "repository", "repositories"],
+    answer:
+      "His GitHub profile is github.com/Lucifer7600. You can also use the GitHub link in the contact section.",
+  },
+  {
+    topics: ["linkedin", "professional network"],
+    answer:
+      "His LinkedIn profile is linkedin.com/in/abhishek-lunagariya-a78507194, also linked in the contact section.",
+  },
+  {
+    topics: ["resume", "résumé", "cv", "download"],
+    answer:
+      "Use the Résumé PDF button in the navigation to open or download Abhishek's current résumé.",
+  },
+  {
+    topics: ["education", "degree", "university", "college", "certification", "certificate"],
+    answer:
+      "Education and certification details are not published in this portfolio. Please consult the résumé PDF or ask Abhishek directly for the latest information.",
+  },
+  {
+    topics: ["salary", "age", "birthday", "personal", "married", "visa", "work permit"],
+    answer:
+      "That personal detail is not published in the portfolio. Please contact Abhishek directly if it is relevant to a professional opportunity.",
+  },
+];
+
 function SystemGuide() {
   const dragged = useRef(false);
   const [open, setOpen] = useState(false);
@@ -436,24 +548,34 @@ function SystemGuide() {
   >([
     {
       role: "agent",
-      text: "Hi, I’m Abhishek’s portfolio agent. Ask me about his backend experience, projects, technical stack, or availability.",
+      text: "Hi, I’m Abhishek’s offline portfolio agent. Ask me almost anything about his experience, work, projects, stack, impact, availability, or contact details.",
     },
   ]);
   const answer = (question: string) => {
-    const q = question.toLowerCase();
-    if (/skill|stack|technology|java|spring/.test(q))
-      return "His core stack is Java, Spring Boot, REST APIs, PostgreSQL, Kafka, AWS, Docker, Kubernetes, Jenkins, JUnit, and Mockito.";
-    if (/experience|work|ciklum|cred/.test(q))
-      return "He has 4+ years of software development experience, currently building compliance microservices at Ciklum after working on inventory and reporting systems at CRED.";
-    if (/project|built|portfolio/.test(q))
-      return "Featured work includes an enterprise compliance platform, an inventory and reporting system, and cloud-native delivery automation—all backed by measurable production outcomes.";
-    if (/metric|impact|performance|latency|scale/.test(q))
-      return "Verified impact includes API latency reduced from 500ms to 400ms, PostgreSQL throughput improved by 30%, support for 20,000+ peak concurrent requests, and 95% test coverage.";
-    if (/available|hire|location|ottawa|relocat/.test(q))
-      return "He is based in Ottawa, Ontario and is open to backend and software engineering opportunities, including relocation.";
-    if (/contact|email|reach|resume|résumé/.test(q))
-      return "You can call him at +1 (514) 998-2933, email Abhyluna2000@gmail.com, or use the résumé button in the navigation. His GitHub and LinkedIn are available in the contact section.";
-    return "I can help with his skills, experience, projects, performance metrics, availability, résumé, or contact details. What would you like to explore?";
+    const normalized = question
+      .toLowerCase()
+      .replace(/[^a-z0-9+#./é\s-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (/^(hi|hello|hey|good morning|good afternoon|good evening)\b/.test(normalized))
+      return "Hello! Ask me about Abhishek’s roles, projects, backend stack, databases, cloud tools, measurable impact, availability, résumé, or contact details.";
+    if (/what can (you|i) ask|help|options|topics/.test(normalized))
+      return "I can cover his professional summary, Ciklum and CRED experience, projects, Java/Spring work, APIs, databases, Kafka, cloud and DevOps tools, testing, performance metrics, problem-solving approach, location, availability, résumé, GitHub, LinkedIn, phone, and email.";
+
+    const words = new Set(normalized.split(" ").filter((word) => word.length > 2));
+    const ranked = portfolioKnowledge
+      .map((entry) => ({
+        entry,
+        score: entry.topics.reduce((total, topic) => {
+          if (normalized.includes(topic)) return total + (topic.includes(" ") ? 5 : 3);
+          const topicWords = topic.split(" ");
+          return total + topicWords.filter((word) => words.has(word)).length;
+        }, 0),
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    if (ranked[0]?.score > 0) return ranked[0].entry.answer;
+    return "I don’t have that detail in Abhishek’s published portfolio, so I won’t guess. Try asking about his experience, employers, projects, skills, metrics, location, availability, résumé, or contact information.";
   };
   const ask = (question: string) => {
     if (!question.trim()) return;
@@ -574,7 +696,7 @@ function SystemGuide() {
             className={`relative h-20 w-20 rounded-full border-2 bg-white p-0.5 shadow-[0_15px_45px_rgba(0,0,0,.32)] transition ${open ? "border-blue-400 ring-4 ring-blue-400/20" : "border-amber-300 ring-4 ring-amber-300/15"}`}
           >
             <img
-              src={`${import.meta.env.BASE_URL}profile-photo.png`}
+              src={`${import.meta.env.BASE_URL}animated-avatar.png`}
               alt="Abhishek portfolio agent"
               draggable={false}
               className="pointer-events-none h-full w-full select-none rounded-full object-cover object-[50%_24%]"
@@ -601,7 +723,7 @@ function SystemGuide() {
             className="topic-announcement pointer-events-none fixed bottom-5 left-1/2 z-[54] flex w-[min(440px,calc(100vw-32px))] -translate-x-1/2 items-center gap-3 rounded-2xl border border-amber-300/50 bg-[#fffdf7]/95 p-3 text-zinc-900 shadow-[0_18px_60px_rgba(0,0,0,.28)] backdrop-blur"
           >
             <img
-              src={`${import.meta.env.BASE_URL}profile-photo.png`}
+              src={`${import.meta.env.BASE_URL}animated-avatar.png`}
               alt=""
               className="h-12 w-12 shrink-0 rounded-full border border-amber-300 object-cover object-[50%_24%]"
             />
@@ -626,14 +748,14 @@ function SystemGuide() {
           >
             <header className="flex items-center gap-3 border-b border-white/10 p-4">
               <img
-                src={`${import.meta.env.BASE_URL}profile-photo.png`}
+                src={`${import.meta.env.BASE_URL}animated-avatar.png`}
                 alt=""
                 className="h-10 w-10 rounded-full border border-blue-300 object-cover object-[50%_24%]"
               />
               <div>
                 <p className="text-sm font-semibold">Ask Abhishek AI</p>
                 <p className="font-mono text-[8px] tracking-wider text-emerald-300">
-                  ● PORTFOLIO KNOWLEDGE ONLINE
+                  ● PRIVATE PORTFOLIO KNOWLEDGE · OFFLINE
                 </p>
               </div>
               <button
@@ -664,7 +786,14 @@ function SystemGuide() {
               ))}
             </div>
             <div className="flex gap-2 overflow-x-auto border-t border-white/10 px-3 pt-3">
-              {["Core skills", "Impact metrics", "Availability"].map((q) => (
+              {[
+                "About Abhishek",
+                "Current role",
+                "Core skills",
+                "Projects",
+                "Impact metrics",
+                "Availability",
+              ].map((q) => (
                 <button
                   onClick={() => ask(q)}
                   key={q}
@@ -678,7 +807,7 @@ function SystemGuide() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about Abhishek…"
+                placeholder="Ask anything about Abhishek…"
                 className="min-w-0 flex-1 rounded-xl border border-white/10 bg-black/20 px-3 py-2.5 text-xs outline-none placeholder:text-slate-600 focus:border-blue-400"
               />
               <button className="rounded-xl bg-blue-600 px-3 text-xs font-semibold">
@@ -1782,7 +1911,7 @@ function PortfolioIntro({ onComplete }: { onComplete: () => void }) {
             className="absolute -inset-3 rounded-full border border-dashed border-cyan-300/35"
           />
           <img
-            src={`${import.meta.env.BASE_URL}profile-photo.png`}
+            src={`${import.meta.env.BASE_URL}animated-avatar.png`}
             alt="Abhishek Lunagariya"
             className="h-full w-full rounded-full border-2 border-amber-200/70 bg-white object-cover object-[50%_24%] shadow-[0_22px_80px_rgba(34,211,238,.22)]"
           />
